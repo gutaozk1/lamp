@@ -16,6 +16,9 @@ const turnOnLamp = () => {
     if(!lampMiddleIsOn){
         lampMiddle.classList.add('lamp-on');
     }
+
+    const lampAudio = new Audio('lampSound.mp3');
+    lampAudio.play();
 }
 
 const turnOffLamp = () => {
@@ -36,4 +39,7 @@ const turnOffLamp = () => {
     if(lampMiddleIsOn){
         lampMiddle.classList.remove('lamp-on');
     }
+
+    const lampAudio = new Audio('lampSound.mp3');
+    lampAudio.play();
 }
