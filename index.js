@@ -4,21 +4,17 @@ const turnOnLamp = () => {
     const classListLampTop = [...lampTop.classList]
     const lampTopIsOn = classListLampTop.includes('lamp-on')
     
-    if(!lampTopIsOn){
-        lampTop.classList.add('lamp-on');
-    }
-    
     const lampMiddle = document.querySelector('.lamp-middle');
     
     classListLampMiddle = [...lampMiddle.classList]
     const lampMiddleIsOn = classListLampMiddle.includes('lamp-on')
     
-    if(!lampMiddleIsOn){
+    if(!lampMiddleIsOn && !lampTopIsOn){
         lampMiddle.classList.add('lamp-on');
+        lampTop.classList.add('lamp-on');
+        const lampAudio = new Audio('lampSound.mp3');
+        lampAudio.play();
     }
-
-    const lampAudio = new Audio('lampSound.mp3');
-    lampAudio.play();
 }
 
 const turnOffLamp = () => {
@@ -27,19 +23,15 @@ const turnOffLamp = () => {
     const classListLampTop = [...lampTop.classList]
     const lampTopIsOn = classListLampTop.includes('lamp-on')
     
-    if(lampTopIsOn){
-        lampTop.classList.remove('lamp-on');
-    }
-    
     const lampMiddle = document.querySelector('.lamp-middle');
     
     classListLampMiddle = [...lampMiddle.classList]
     const lampMiddleIsOn = classListLampMiddle.includes('lamp-on')
     
-    if(lampMiddleIsOn){
+    if(lampMiddleIsOn && lampTopIsOn){
+        const lampAudio = new Audio('lampSound.mp3');
+        lampAudio.play();
         lampMiddle.classList.remove('lamp-on');
+        lampTop.classList.remove('lamp-on');
     }
-
-    const lampAudio = new Audio('lampSound.mp3');
-    lampAudio.play();
 }
